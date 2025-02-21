@@ -1,0 +1,144 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+$rick-and-morty-primary: mat.define-palette(mat.$indigo-palette);
+$rick-and-morty-accent: mat.define-palette(
+  mat.$orange-palette,
+  A200,
+  A100,
+  A400
+);
+
+$rick-and-morty-warn: mat.define-palette(mat.$red-palette);
+
+$rick-and-morty-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $rick-and-morty-primary,
+      accent: $rick-and-morty-accent,
+      warn: $rick-and-morty-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($rick-and-morty-theme);
+
+:root {
+  --color-primary: #6ccfdf;
+  --color-primary-dark: #0bafca;
+  --color-white: white;
+  --color-black: black;
+  --color-grey: #dddddd;
+
+  --border: 2px solid black;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0 auto;
+  max-width: 1500px;
+  background-color: var(--color-grey);
+  font-family: Poppins, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-dialog-container {
+  overflow: hidden;
+  border: 3px solid var(--color-black);
+  border-radius: 1rem;
+  box-shadow:
+    6px 6px 0 -2px var(--color-primary),
+    6px 6px 0 var(--color-black);
+}
+
+.mat-mdc-dialog-content {
+  padding: 0;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.62);
+}
+
+button.mat-mdc-button {
+  transition: 0.2s;
+  border: 1px solid var(--color-black);
+  border-radius: 5px;
+  box-shadow: 3px 3px 0 var(--color-black);
+  padding: 0.5rem 1.5rem;
+  background-color: var(--color-primary);
+
+  &:hover {
+    transform: translate(3px, 3px);
+    box-shadow: none;
+  }
+}
+
+.mat-mdc-paginator {
+  margin-top: 1.75rem;
+  border-radius: 1rem;
+  border: var(--border);
+}
+
+table.mdc-data-table__table {
+  border: var(--border);
+  border-radius: 1rem;
+  border-collapse: separate;
+  border-spacing: 0 1.25rem;
+  background-color: var(--color-primary-dark);
+  margin-top: 1.25rem;
+}
+
+tr.mat-mdc-row {
+  margin-bottom: 1.5rem;
+  border: var(--border);
+  background-color: white;
+}
+
+td.mdc-data-table__cell,
+th.mdc-data-table__header-cell {
+  text-align: center;
+  border-bottom: var(--border);
+  border-top: var(--border);
+  padding: 0 0 0 1rem;
+}
+
+th.mdc-data-table__header-cell {
+  border: none;
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.accent {
+  color: var(--color-primary-dark);
+  font-weight: 600;
+  font-size: 1.25rem;
+}
+
+div.mdc-text-field {
+  border: 1px solid;
+  border-radius: 5px;
+  height: 3.375rem;
+}
+
+.filter {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+
+  & button {
+    height: 3.2rem;
+  }
+
+  @media screen and (max-width: 767px) {
+    flex-direction: column;
+    gap: 0rem;
+    margin: 2.5rem 0;
+
+    & button {
+      margin-bottom: 1.25rem;
+    }
+  }
+}

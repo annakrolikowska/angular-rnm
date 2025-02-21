@@ -1,0 +1,19 @@
+.home {
+  text-align: center;
+
+  &__img-container {
+    & img {
+      height: 80vh;
+      width: auto;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    &__img-container {
+      & img {
+        height: 90%;
+        width: 90%;
+      }
+    }
+  }
+}

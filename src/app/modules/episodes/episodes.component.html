@@ -1,0 +1,73 @@
+<section class="episodes">
+  <app-filter-episodes></app-filter-episodes>
+  <div
+    class="episodes__wrapper"
+    *ngIf="episodes$ | async as episodes; else emptyList"
+  >
+    <div class="episodes__container">
+      <table
+        mat-table
+        [dataSource]="episodes$ | async"
+        class="mat-elevation-z8"
+      >
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let episode">
+            <span class="favorite">
+              <mat-icon
+                aria-hidden="false"
+                aria-label="favorite"
+                fontIcon="favorite"
+                (click)="openDialog(episode)"
+              ></mat-icon>
+              {{ episode.id }}</span
+            >
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let episode">
+            <span class="accent">{{ episode.name }} </span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="air_date">
+          <th mat-header-cell *matHeaderCellDef>Air Date</th>
+          <td mat-cell *matCellDef="let episode">{{ episode.air_date }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="episode">
+          <th mat-header-cell *matHeaderCellDef>Episode</th>
+          <td mat-cell *matCellDef="let episode">{{ episode.episode }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="characters">
+          <th mat-header-cell *matHeaderCellDef>Characters</th>
+          <td mat-cell *matCellDef="let episode" class="avatars-container">
+            <div
+              *ngFor="let character of episode.characters$ | async"
+              class="avatar"
+            >
+              <img [src]="character.image" [alt]="character.name" />
+            </div>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <mat-paginator
+      [length]="totalEpisodes"
+      [pageSize]="pageSize"
+      (page)="onPageChange($event)"
+    >
+    </mat-paginator>
+  </div>
+
+  <ng-template #emptyList>
+    <app-emptylist-message></app-emptylist-message>
+  </ng-template>
+</section>

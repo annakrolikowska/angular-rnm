@@ -1,0 +1,25 @@
+img {
+  width: 100%;
+}
+
+.mat-mdc-dialog-content {
+  padding: 0;
+}
+
+.popup-text {
+  text-align: center;
+  padding: 0 1.25rem 1.25rem;
+  ul {
+    list-style: none;
+    text-align: left;
+
+    span {
+      color: var(--color-primary);
+      font-weight: 600;
+    }
+  }
+
+  & .mat-mdc-dialog-actions {
+    justify-content: center;
+  }
+}

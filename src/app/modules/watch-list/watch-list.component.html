@@ -1,0 +1,28 @@
+<section class="watch-list">
+  <form
+    [formGroup]="newListForm"
+    (ngSubmit)="createNewList()"
+    class="watch-list__form"
+  >
+    <mat-form-field>
+      <input matInput placeholder="List name" formControlName="listName" />
+    </mat-form-field>
+    <button mat-button type="submit">Create a list</button>
+  </form>
+
+  <div
+    class="watch-list__container"
+    *ngIf="watchLists.length > 0; else emptyList"
+  >
+    <app-todo-list
+      *ngFor="let todoList of watchLists"
+      [todoList]="todoList"
+      (remove)="removeList($event)"
+      (episodeStateChange)="saveEpisodeState($event)"
+      (episodeRemoved)="removeEpisodeFromList($event.episodeId, $event.listId)"
+    ></app-todo-list>
+  </div>
+  <ng-template #emptyList>
+    <h3>Create your first watch list!</h3>
+  </ng-template>
+</section>

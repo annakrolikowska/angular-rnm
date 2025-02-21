@@ -1,0 +1,23 @@
+.dialog {
+  & mat-radio-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & .mat-mdc-dialog-actions {
+    justify-content: space-evenly;
+    margin: 10px;
+  }
+
+  &__error {
+    margin-top: 1.25rem;
+    height: 2rem;
+
+    & p {
+      margin: 0;
+      font-size: 0.8rem;
+      line-height: normal;
+      color: red;
+    }
+  }
+}

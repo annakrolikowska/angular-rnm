@@ -1,0 +1,26 @@
+<form class="filter" [formGroup]="filterForm" (ngSubmit)="addFilters()">
+  <mat-form-field>
+    <mat-label>Location name</mat-label>
+    <input matInput #input formControlName="name" placeholder="ex. Earth" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Dimension</mat-label>
+    <input
+      matInput
+      #input
+      formControlName="dimension"
+      placeholder="ex. Fantasy"
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <input matInput #input formControlName="type" placeholder="ex. Planet" />
+  </mat-form-field>
+
+  <button mat-button type="submit">Filter</button>
+  <button mat-button type="reset" (click)="resetForm()" appTransparentBg>
+    Reset
+  </button>
+</form>

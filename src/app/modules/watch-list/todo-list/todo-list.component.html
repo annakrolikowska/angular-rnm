@@ -1,0 +1,40 @@
+<div class="todo-list" id="{{ todoList.id }}">
+  <mat-icon
+    aria-hidden="false"
+    aria-label="delete"
+    fontIcon="clear"
+    class="todo-list__remove"
+    (click)="onRemove()"
+  ></mat-icon>
+  <h2>{{ todoList.listName }}</h2>
+  <ng-container *ngIf="todoList.selectedEpisodes.length > 0; else emptyList">
+    <ul>
+      <li
+        class="todo-list__episode"
+        *ngFor="let episode of todoList.selectedEpisodes"
+      >
+        <mat-checkbox
+          [id]="episode.id"
+          [(ngModel)]="episode.checked"
+          (change)="onEpisodeStateChange(episode)"
+          ><span class="todo-list__label">
+            {{ episode.name }} - {{ episode.episode }}
+            <mat-icon
+              aria-hidden="false"
+              aria-label="delete"
+              fontIcon="clear"
+              class="todo-list__remove-sm"
+              (click)="onRemoveEpisode(episode.id, todoList.id)"
+            ></mat-icon
+          ></span>
+        </mat-checkbox>
+      </li>
+    </ul>
+  </ng-container>
+  <ng-template #emptyList>
+    <p>
+      This watch list is empty. <br />
+      <a href="/episodes">Add a new episode.</a>
+    </p>
+  </ng-template>
+</div>

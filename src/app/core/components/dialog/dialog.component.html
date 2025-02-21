@@ -1,0 +1,28 @@
+<div class="dialog">
+  <h2 mat-dialog-title>Add episode to watch list:</h2>
+  <div mat-dialog-content>
+    <mat-radio-group>
+      <mat-radio-button
+        *ngFor="let list of watchLists$ | async"
+        [value]="list.id"
+        (click)="onListSelected(list)"
+      >
+        {{ list.listName }}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div class="dialog__error">
+      <p *ngIf="episodeExists">This list already includes this episode.</p>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" appTransparentBg>Return</button>
+    <button
+      mat-button
+      [mat-dialog-close]="selectedList"
+      cdkFocusInitial
+      [disabled]="episodeExists"
+    >
+      Add
+    </button>
+  </div>
+</div>

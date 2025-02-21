@@ -1,0 +1,7 @@
+.app {
+  padding: 1.25rem 3.75rem;
+
+  @media screen and (max-width: 1100px) {
+    padding: 1.25rem 2.5rem;
+  }
+}

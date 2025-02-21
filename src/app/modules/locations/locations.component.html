@@ -1,0 +1,51 @@
+<section class="locations">
+  <app-filter-locations></app-filter-locations>
+  <div
+    class="location__wrapper"
+    *ngIf="locations$ | async as locations; else emptyList"
+  >
+    <div class="locations__container">
+      <table
+        mat-table
+        [dataSource]="locations$ | async"
+        class="mat-elevation-z8"
+      >
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef>ID</th>
+          <td mat-cell *matCellDef="let location">{{ location.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let location">
+            <span class="accent">{{ location.name }} </span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let location">{{ location.type }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dimension">
+          <th mat-header-cell *matHeaderCellDef>dimension</th>
+          <td mat-cell *matCellDef="let location">{{ location.dimension }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+
+    <mat-paginator
+      [length]="totalLocations"
+      [pageSize]="pageSize"
+      (page)="onPageChange($event)"
+    >
+    </mat-paginator>
+  </div>
+  <ng-template #emptyList>
+    <app-emptylist-message></app-emptylist-message>
+  </ng-template>
+</section>

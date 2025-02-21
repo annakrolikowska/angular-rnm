@@ -1,0 +1,16 @@
+<form class="filter" [formGroup]="filterForm" (ngSubmit)="addFilters()">
+  <mat-form-field>
+    <mat-label>Episode name</mat-label>
+    <input
+      matInput
+      #input
+      formControlName="name"
+      placeholder="ex. Anatomy Park"
+    />
+  </mat-form-field>
+
+  <button mat-button type="submit">Filter</button>
+  <button mat-button type="reset" (click)="resetForm()" appTransparentBg>
+    Reset
+  </button>
+</form>

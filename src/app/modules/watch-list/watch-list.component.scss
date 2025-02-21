@@ -1,0 +1,39 @@
+.watch-list {
+  text-align: center;
+  margin: 1.25rem 0;
+
+  &__form {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+
+    & button {
+      height: 3.2rem;
+    }
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 2rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    &__container {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    &__container {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+
+    &__form {
+      flex-direction: column;
+      gap: 0rem;
+      margin: 2.5rem 0;
+    }
+  }
+}

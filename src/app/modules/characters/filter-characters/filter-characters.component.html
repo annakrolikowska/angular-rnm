@@ -1,0 +1,29 @@
+<form class="filter" [formGroup]="filterForm" (ngSubmit)="addFilters()">
+  <mat-form-field>
+    <mat-label>Species</mat-label>
+    <input matInput #input formControlName="species" placeholder="ex. Human" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status">
+      <mat-option *ngFor="let option of statusOptions" [value]="option.value">{{
+        option.value
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select formControlName="gender">
+      <mat-option *ngFor="let option of genderOptions" [value]="option.value">{{
+        option.value
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-button type="submit">Filter</button>
+  <button mat-button type="reset" (click)="resetForm()" appTransparentBg>
+    Reset
+  </button>
+</form>

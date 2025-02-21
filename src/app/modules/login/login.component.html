@@ -1,0 +1,128 @@
+<section class="login">
+  <form
+    *ngIf="!signup; else signupForm"
+    [formGroup]="loginForm"
+    (ngSubmit)="login()"
+  >
+    <h2>Log in</h2>
+    <mat-form-field>
+      <mat-label>Enter your email</mat-label>
+      <input
+        matInput
+        placeholder="pat@example.com"
+        formControlName="email"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <button mat-button type="submit" [disabled]="loginForm.invalid">
+      Login
+    </button>
+    <p>
+      Don't have an account yet?
+      <span class="login__signup" (click)="signup = !signup"> Sign Up</span>
+    </p>
+
+    <button class="google-btn" mat-button (click)="loginWithGoogle()">
+      <div class="google-btn__icon">
+        <img src="../../../assets/images/google.svg" />
+      </div>
+      Continue with Google
+    </button>
+  </form>
+
+  <!-- sign up -->
+  <ng-template #signupForm>
+    <form [formGroup]="signUpForm" (ngSubmit)="signUp()">
+      <h2>Sign up</h2>
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="pat@example.com"
+          formControlName="email"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error *ngIf="signUpForm.get('password').invalid">
+          Password must be at least 8 characters long</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Confirm your password</mat-label>
+        <input
+          matInput
+          formControlName="confirmPassword"
+          [type]="hide ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <span
+        *ngIf="passwordMismatch && signUpForm.get('confirmPassword').dirty"
+        class="login__error"
+      >
+        Passwords are not the same
+      </span>
+
+      <button
+        mat-button
+        type="submit"
+        [disabled]="signUpForm.invalid || passwordMismatch"
+      >
+        Sign up
+      </button>
+      <p>
+        I have an account.
+        <span class="login__signup" (click)="signup = !signup"> Log in</span>
+      </p>
+
+      <button class="google-btn" mat-button (click)="loginWithGoogle()">
+        <div class="google-btn__icon">
+          <img src="../../../assets/images/google.svg" />
+        </div>
+        Sign up with Google
+      </button>
+    </form>
+  </ng-template>
+</section>

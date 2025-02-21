@@ -1,0 +1,15 @@
+<header class="header">
+  <div class="header__logo">
+    <img src="../../../../assets/images/logo.png" alt="" routerLink="home" />
+  </div>
+  <nav class="header__nav">
+    <a *ngFor="let link of navigationLinks" [routerLink]="link.path">{{
+      link.label
+    }}</a>
+    <a *ngIf="isAuthorized$ | async; else showLogin" routerLink="watchlist"
+      >Watch list</a
+    >
+    <a *ngIf="isAuthorized$ | async" (click)="logout()">Logout</a>
+    <ng-template #showLogin><a routerLink="login">Login</a> </ng-template>
+  </nav>
+</header>

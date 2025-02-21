@@ -1,0 +1,31 @@
+<div mat-dialog-content>
+  <img [src]="data.image" alt="{{ data.name }}" />
+</div>
+<div class="popup-text">
+  <h2 mat-dialog-title>{{ data.name }}</h2>
+  <ul>
+    <li>
+      <span> Status: </span>
+      {{ data.status }}
+    </li>
+    <li>
+      <span> Species: </span>
+      {{ data.species }}
+    </li>
+    <li>
+      <span> Gender: </span>
+      {{ data.gender }}
+    </li>
+    <li *ngIf="data.type">
+      <span> Type: </span>
+      {{ data.type }}
+    </li>
+    <li>
+      <span> Location: </span>
+      {{ data.location }}
+    </li>
+  </ul>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+  </div>
+</div>
