@@ -1,27 +1,45 @@
-# RickAndMorty
+#  Rick and Morty
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.2.
 
-## Development server
+<img src='https://i.ibb.co/0RXd0WDs/giard.png'> 
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+This is an application that uses the [Rick and Morty API](https://rickandmortyapi.com/). It features Characters, Episodes, and Locations tabs, where elements from the API are displayed. Additionally, after logging in, users gain access to the Watch List tab, where they can create their own watchlists and add episodes to them. Each episode can later be marked as watched or removed from the list.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Authentication is handled via **Firebase**, allowing users to create an account or log in using Google Sign-In. Watchlists are stored in **Firestore** as collections. The project was built using the **Angular** framework.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+ ## :bulb: Project features:
+- Browse Characters, Episodes, and Locations fetched from the Rick and Morty API
+- Create a personalized Watch List (available after logging in)
+- Mark episodes as watched or remove them from the watchlist
+- **Firebase** authentication (email/password or Google Sign-In)
+- Watchlists stored in **Firestore** for persistent data
+- State management with **RxJS** for reactive data handling
+- Form handling with **ReactiveFormsModule**
+- Responsive design for desktop and mobile devices, using **Angular Material** for styling
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+ ## :hammer_and_pick: Technologies
 
-## Running end-to-end tests
+[![My Skills](https://skillicons.dev/icons?i=angular,rxjs,ts,scss,git,figma)](https://skillicons.dev)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+###### Angular • RxJS • TypeScript • SCSS •  Git • Figma
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## :gear: Installation
+This project was generated with Angular CLI version 17.2.2.
+It uses Node.js and npm.
+
+To install dependencies:
+
+
+    npm install
+To start the development server:
+
+
+    ng serve
+Navigate to http://localhost:4200/ to access the application.
+
+
+
